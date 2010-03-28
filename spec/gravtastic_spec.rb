@@ -75,5 +75,34 @@ describe Gravtastic do
     end
 
   end
+  
+  describe "#gravatar_exists?" do
+    
+    before(:each) do
+
+    end
+    
+    it "returns false if user has does not have 'real' image" do
+      @user = @g.new
+      stub(@user).email{ 'user@example.com' }
+      @user.gravatar_exists?.should == false
+    end
+    
+    it "returns true if user has 'real' image" do
+      @user = @g.new
+      stub(@user).email{ 'tyler.a.montgomery@gmail.com' }
+      @user.gravatar_exists?.should == true
+      
+    end
+    
+    it "should override the default placeholder image service" do
+      @user = @g.new
+      stub(@user.class).gravatar_defaults{ {:default=>"identicon", :filetype => :png} }
+      stub(@user).email{ 'user@example.com' }
+      @user.gravatar_exists?.should == false
+      
+    end
+
+  end
 
 end

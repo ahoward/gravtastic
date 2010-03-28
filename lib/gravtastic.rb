@@ -1,6 +1,9 @@
 require 'digest/md5'
 require 'cgi'
 require 'uri'
+require 'open-uri'
+require 'hitimes'
+require 'patron'
 
 module Gravtastic
 
@@ -64,6 +67,16 @@ module Gravtastic
       gravatar_hostname(options.delete(:secure)) +
         gravatar_filename(options.delete(:filetype)) +
         url_params_from_hash(options)
+    end
+    
+    def gravatar_exists?
+      sess = Patron::Session.new
+      sess.base_url = gravatar_url(:default=>404)
+      response = sess.get '/'
+      has_image = response.status != 404
+      # gravatar will return a 200 without an image, check to see if an image is really coming back
+      has_image = !response.headers["Content-Type"].include?('text/html') if response.status == 200
+      return has_image
     end
 
   private
