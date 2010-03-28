@@ -1,3 +1,4 @@
+*.gemspec
 coverage
 html
 pkg

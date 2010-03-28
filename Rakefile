@@ -1,13 +1,12 @@
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gs|
-    gs.name              = 'gravtastic'
-    gs.homepage          = 'http://github.com/chrislloyd/gravtastic'
+    gs.name              = 'ubermajestix-gravtastic'
+    gs.homepage          = 'http://github.com/ubermajestix/gravtastic'
     gs.description       = 'Add Gravatars to your Rubies/Rails!'
     gs.summary           = 'Ruby/Gravatar'
-    gs.email             = 'christopher.lloyd@gmail.com'
-    gs.author            = 'Chris Lloyd'
-    gs.rubyforge_project = 'gravtastic'
+    gs.email             = 'tyler.a.montgomery@gmail.com'
+    gs.author            = 'Tyler Montgomery'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
