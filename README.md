@@ -40,12 +40,12 @@ Now all your Gravatars will come from a secure connection, be a GIF and be 120x1
 
 If you want to check to see if your user has a real gravatar, not the default image) you can do this:
   
-  <% if @user.gravatar_exisits? %>
-    <%= image_tag @user.gravatar_url %>
-  <% else %>  
-    <%= image_tag @user.gravatar_url %>
-    <%= link_to 'upload a profile picture at gravatar' 'http://gravatar.com/signup' %>
-  <% end %>  
+    <% if @user.gravatar_exisits? %>
+      <%= image_tag @user.gravatar_url %>
+    <% else %>  
+      <%= image_tag @user.gravatar_url %>
+      <%= link_to 'upload a profile picture at gravatar' 'http://gravatar.com/signup' %>
+    <% end %>  
   
 _Note: You can use either `is_gravtastic!` or `is_gravtastic`, they both do the same thing._
 
