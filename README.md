@@ -38,7 +38,7 @@ That will show R rated Gravatars over a secure connection. If you find yourself 
 
 Now all your Gravatars will come from a secure connection, be a GIF and be 120x120px. The email will also come from the `author_email` field, not the default `email` field. Don't worry, you arn't locked into these defaults (you can override them by passing options to `#gravatar_url` like before).
 
-If you want to check to see if your user has a real gravatar, not the default image) you can do this:
+If you want to check to see if your user has a real gravatar, not the default image you can do this:
   
     <% if @user.gravatar_exisits? %>
       <%= image_tag @user.gravatar_url %>
