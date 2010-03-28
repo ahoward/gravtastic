@@ -38,6 +38,15 @@ That will show R rated Gravatars over a secure connection. If you find yourself 
 
 Now all your Gravatars will come from a secure connection, be a GIF and be 120x120px. The email will also come from the `author_email` field, not the default `email` field. Don't worry, you arn't locked into these defaults (you can override them by passing options to `#gravatar_url` like before).
 
+If you want to check to see if your user has a real gravatar, not the default image) you can do this:
+  
+  <% if @user.gravatar_exisits? %>
+    <%= image_tag @user.gravatar_url %>
+  <% else %>  
+    <%= image_tag @user.gravatar_url %>
+    <%= link_to 'upload a profile picture at gravatar' 'http://gravatar.com/signup' %>
+  <% end %>  
+  
 _Note: You can use either `is_gravtastic!` or `is_gravtastic`, they both do the same thing._
 
 ### Plain Ruby
