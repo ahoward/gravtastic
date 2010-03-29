@@ -71,6 +71,7 @@ module Gravtastic
     
     def gravatar_exists?
       sess = Patron::Session.new
+      sess.timeout = 42
       sess.base_url = gravatar_url(:default=>404)
       response = sess.get '/'
       has_image = response.status != 404
