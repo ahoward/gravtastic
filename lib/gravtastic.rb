@@ -3,7 +3,19 @@ require 'cgi'
 require 'uri'
 require 'open-uri'
 require 'hitimes'
-require 'patron'
+begin
+  gem 'patron', '~> 0.4.6'
+  require 'patron'
+rescue Gem::LoadError => e
+  STDERR.puts "="*45
+  STDERR.puts "Gravtastic says:"
+  STDERR.puts " #{e.message}"
+  STDERR.puts " Looks like need to install the patron gem"
+  STDERR.puts " Its so you can check if a user has a real gravatar"
+  STDERR.puts " sudo gem install patron"
+  STDERR.puts "="*45
+  exit 1
+end
 
 module Gravtastic
 
