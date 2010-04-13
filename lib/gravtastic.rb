@@ -2,7 +2,6 @@ require 'digest/md5'
 require 'cgi'
 require 'uri'
 require 'open-uri'
-require 'hitimes'
 begin
   gem 'patron', '~> 0.4.6'
   require 'patron'
