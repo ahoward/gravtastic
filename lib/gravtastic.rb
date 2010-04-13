@@ -82,14 +82,21 @@ module Gravtastic
     end
     
     def gravatar_exists?
-      sess = Patron::Session.new
-      sess.timeout = 42
-      sess.base_url = gravatar_url(:default=>404)
-      response = sess.get '/'
-      has_image = response.status != 404
-      # gravatar will return a 200 without an image, check to see if an image is really coming back
-      has_image = !response.headers["Content-Type"].include?('text/html') if response.status == 200
-      return has_image
+      begin
+        # TODO [tm] cache the response to avoid this call
+        # In the app I'm calling this via javascript, so we show the gravatar image,
+        # then ask gravatar if its a "real" image, if its not, 
+        # we show a div that asks the user to upload a real image
+        sess = Patron::Session.new
+        sess.base_url = gravatar_url(:default=>404)
+        response = sess.get '/'
+        @has_image = response.status != 404
+        # gravatar will return a 200 without an image, check to see if an image is really coming back
+        @has_image = !response.headers["Content-Type"].include?('text/html') if response.status == 200
+        return @has_image
+      rescue StandardError
+        return false
+      end
     end
 
   private
