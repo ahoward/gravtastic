@@ -95,7 +95,7 @@ module Gravtastic
         @has_image = !response.headers["Content-Type"].include?('text/html') if response.status == 200
         return @has_image
       rescue StandardError
-        return false
+        return true #assume the user has a real image
       end
     end
 
